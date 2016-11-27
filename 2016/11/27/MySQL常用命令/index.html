@@ -1,0 +1,567 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="查询连接1234567#如果是root帐号，查询所有用户的当前连接；如果是其它普通帐号，则查询自己占用的连接#查询前100条连接show processlist;#查询所有连接show full processlist;
+查询状态123456789101112131415161718192021222324252627282930313233343536show status;show statu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL常用命令">
+<meta property="og:url" content="http://logx.me/2016/11/27/MySQL常用命令/index.html">
+<meta property="og:site_name" content="挺豪的博客">
+<meta property="og:description" content="查询连接1234567#如果是root帐号，查询所有用户的当前连接；如果是其它普通帐号，则查询自己占用的连接#查询前100条连接show processlist;#查询所有连接show full processlist;
+查询状态123456789101112131415161718192021222324252627282930313233343536show status;show statu">
+<meta property="og:updated_time" content="2016-11-27T14:58:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL常用命令">
+<meta name="twitter:description" content="查询连接1234567#如果是root帐号，查询所有用户的当前连接；如果是其它普通帐号，则查询自己占用的连接#查询前100条连接show processlist;#查询所有连接show full processlist;
+查询状态123456789101112131415161718192021222324252627282930313233343536show status;show statu">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://logx.me/2016/11/27/MySQL常用命令/"/>
+
+
+  <title> MySQL常用命令 | 挺豪的博客 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">挺豪的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+            日程
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MySQL常用命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-27T16:15:34+08:00" content="2016-11-27">
+              2016-11-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="查询连接"><a href="#查询连接" class="headerlink" title="查询连接"></a>查询连接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#如果是root帐号，查询所有用户的当前连接；如果是其它普通帐号，则查询自己占用的连接</div><div class="line"></div><div class="line">#查询前100条连接</div><div class="line">show processlist;</div><div class="line"></div><div class="line">#查询所有连接</div><div class="line">show full processlist;</div></pre></td></tr></table></figure>
+<h4 id="查询状态"><a href="#查询状态" class="headerlink" title="查询状态"></a>查询状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">show status;</div><div class="line"></div><div class="line">show status like &apos;%变量名%&apos;;</div><div class="line"></div><div class="line">Aborted_clients 由于客户没有正确关闭连接已经死掉，已经放弃的连接数量。</div><div class="line">Aborted_connects 尝试已经失败的MySQL服务器的连接的次数。</div><div class="line">Connections 试图连接MySQL服务器的次数。</div><div class="line">Created_tmp_tables 当执行语句时，已经被创造了的隐含临时表的数量。</div><div class="line">Delayed_insert_threads 正在使用的延迟插入处理器线程的数量。</div><div class="line">Delayed_writes 用INSERT DELAYED写入的行数。</div><div class="line">Delayed_errors 用INSERT DELAYED写入的发生某些错误(可能重复键值)的行数。</div><div class="line">Flush_commands 执行FLUSH命令的次数。</div><div class="line">Handler_delete 请求从一张表中删除行的次数。</div><div class="line">Handler_read_first 请求读入表中第一行的次数。</div><div class="line">Handler_read_key 请求数字基于键读行。</div><div class="line">Handler_read_next 请求读入基于一个键的一行的次数。</div><div class="line">Handler_read_rnd 请求读入基于一个固定位置的一行的次数。</div><div class="line">Handler_update 请求更新表中一行的次数。</div><div class="line">Handler_write 请求向表中插入一行的次数。</div><div class="line">Key_blocks_used 用于关键字缓存的块的数量。</div><div class="line">Key_read_requests 请求从缓存读入一个键值的次数。</div><div class="line">Key_reads 从磁盘物理读入一个键值的次数。</div><div class="line">Key_write_requests 请求将一个关键字块写入缓存次数。</div><div class="line">Key_writes 将一个键值块物理写入磁盘的次数。</div><div class="line">Max_used_connections 同时使用的连接的最大数目。</div><div class="line">Not_flushed_key_blocks 在键缓存中已经改变但是还没被清空到磁盘上的键块。</div><div class="line">Not_flushed_delayed_rows 在INSERT DELAY队列中等待写入的行的数量。</div><div class="line">Open_tables 打开表的数量。</div><div class="line">Open_files 打开文件的数量。</div><div class="line">Open_streams 打开流的数量(主要用于日志记载）</div><div class="line">Opened_tables 已经打开的表的数量。</div><div class="line">Questions 发往服务器的查询的数量。</div><div class="line">Slow_queries 要花超过long_query_time时间的查询数量。</div><div class="line">Threads_connected 当前打开的连接的数量。</div><div class="line">Threads_running 不在睡眠的线程数量。</div><div class="line">Uptime 服务器工作了多少秒。</div></pre></td></tr></table></figure>
+<h4 id="查询配置"><a href="#查询配置" class="headerlink" title="查询配置"></a>查询配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#会话变量</div><div class="line">show variables;</div><div class="line">show session variables;</div><div class="line"></div><div class="line">show variables like &apos;%变量名%&apos;;</div><div class="line"></div><div class="line">#全局变量</div><div class="line">show global variables;</div></pre></td></tr></table></figure>
+<h4 id="优化表"><a href="#优化表" class="headerlink" title="优化表"></a>优化表</h4><ul>
+<li>如果您已经删除了表的一大部分，或者如果您已经对含有可变长度行的表（含有VARCHAR, BLOB或TEXT列的表）进行了很多更改，则应使用<br>OPTIMIZE TABLE。被删除的记录被保持在链接清单中，后续的INSERT操作会重新使用旧的记录位置。您可以使用OPTIMIZE TABLE来重新<br>利用未使用的空间，并整理数据文件的碎片</li>
+<li>在OPTIMIZE TABLE运行过程中，MySQL会锁定表<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#查询表索引情况</div><div class="line">show index from table_name;</div><div class="line"></div><div class="line">#优化表</div><div class="line">optimize table table_name;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="创建删除用户"><a href="#创建删除用户" class="headerlink" title="创建删除用户"></a>创建删除用户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#创建用户</div><div class="line">create user &apos;u_master&apos;@&apos;%&apos; identified by &apos;master&apos;;</div><div class="line"></div><div class="line">#刷新权限</div><div class="line">flush privileges;</div><div class="line"></div><div class="line">#删除用户</div><div class="line">drop user &apos;m_master&apos;@&apos;%&apos;;</div></pre></td></tr></table></figure>
+<h4 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#授予远程主机访问权限</div><div class="line">grant all privileges on *.* to &apos;u_master&apos;@&apos;%&apos; identified  by &apos;master&apos;;</div><div class="line"></div><div class="line">#with grant option 用户可以将权限授予其他用户</div><div class="line">grant all privileges on *.* to &apos;u_master&apos;@&apos;%&apos; identified  by &apos;master&apos; with grant option;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/27/MySQL配置文件/" rel="next" title="MySQL配置文件">
+                <i class="fa fa-chevron-left"></i> MySQL配置文件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="logx" />
+          <p class="site-author-name" itemprop="name">logx</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#查询连接"><span class="nav-text">查询连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询状态"><span class="nav-text">查询状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询配置"><span class="nav-text">查询配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化表"><span class="nav-text">优化表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建删除用户"><span class="nav-text">创建删除用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#授权"><span class="nav-text">授权</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">logx</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
