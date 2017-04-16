@@ -238,106 +238,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/04/MongoDB基础/" itemprop="url">
-                  MongoDB基础
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-04T20:51:35+08:00" content="2016-12-04">
-              2016-12-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/04/MongoDB基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/MongoDB基础/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/11/28/MySQL分区/" itemprop="url">
                   MySQL分区
                 </a>
@@ -389,7 +289,8 @@
       
         
           
-            <p>select * from information_schema.PARTITIONS where table_schema = ‘database_name’ and table_name = ‘table_name’\G;</p>
+            <p>标记</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> information_schema.PARTITIONS <span class="keyword">where</span> table_schema = <span class="string">'database_name'</span> <span class="keyword">and</span> table_name = <span class="string">'table_name'</span>\G;</div></pre></td></tr></table></figure>
 
           
         
@@ -722,6 +623,7 @@
 <li>初始命令表示一旦容器启动，需要运行的命令，此时使用“/bin/bash”，表示什么也不做，只需进入命令行即可</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#docker run &lt;相关参数&gt; &lt;镜像 ID&gt; &lt;初始命令&gt;</div><div class="line">docker run -i -t --name container_name -v /root/software/:/mnt/software/ image_id /bin/bash</div></pre></td></tr></table></figure>
+<h4 id="4、创建镜像"><a href="#4、创建镜像" class="headerlink" title="4、创建镜像"></a>4、创建镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t user_name/image_name:v1.0 .</div></pre></td></tr></table></figure>
 
           
         
@@ -1107,7 +1009,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1154,7 +1056,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
